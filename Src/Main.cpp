@@ -5,7 +5,7 @@
 
 int main() {
 	std::cout << "[X] -->> Welcome to Astra <<-- [X]" << std::endl;
-	std::cout << "I don't know why i can't make this console hide with c++, I think you need to do it yourself!\n" << std::endl;
+	//std::cout << "I don't know why i can't make this console hide with c++, I think you need to do it yourself!\n" << std::endl; // I don't know why but it work now!
 
 	// Getting Game Process
 	DWORD ProcessId = Memory::GetProcessId(L"csgo.exe");
@@ -55,7 +55,7 @@ int main() {
 
 	std::cout << "\nFound game process starting astra in 3s" << std::endl;
 	Sleep(3000UL);
-	ShowWindow(GetConsoleWindow(), SW_MINIMIZE);
+	ShowWindow(GetConsoleWindow(), SW_HIDE);
 
 	// Render Gui
 	Gui::RenderGui();
