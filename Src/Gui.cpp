@@ -19,7 +19,7 @@ void Gui::RenderGui() noexcept {
 		WS_EX_TOPMOST,
 		WindowClass.lpszClassName,
 		WindowClass.lpszClassName,
-		WS_OVERLAPPEDWINDOW,
+		WS_POPUP,
 		XPOS,
 		YPOS,
 		WIDTH,
@@ -58,6 +58,7 @@ void Gui::RenderGui() noexcept {
 
 			if (Message.message == WM_QUIT) {
 				IsRunning = false;
+				return;
 			}
 		}
 
@@ -66,21 +67,12 @@ void Gui::RenderGui() noexcept {
 		ImGui::NewFrame();
 
 		// Resize
-		RECT Rect;
-		float Width = 0;
-		float Height = 0;
-
-		if (GetWindowRect(Window, &Rect)) {
-			Width = Rect.right - Rect.left;
-			Height = Rect.bottom - Rect.top;
-		}
-
 		ImGui::SetNextWindowPos({ 0, 0 });
-		ImGui::SetNextWindowSize({ Width, Height });
+		ImGui::SetNextWindowSize({ WIDTH, HEIGHT });
 
 		//------------------//
 		// --Start Render-- //
-		ImGui::Begin("Astra", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
+		ImGui::Begin("Astra", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove);
 		ImGui::End();
 
 		// --End Render-- //
