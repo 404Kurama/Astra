@@ -109,7 +109,6 @@ void Gui::RenderGui() noexcept {
 	Colors[ImGuiCol_NavWindowingDimBg] = ImVec4(0.80f, 0.80f, 0.80f, 0.20f);
 	Colors[ImGuiCol_ModalWindowDimBg] = ImVec4(0.20f, 0.20f, 0.20f, 0.35f);
 
-
 	// Main Loop
 	while (IsRunning) {
 		MSG Message;
@@ -131,6 +130,17 @@ void Gui::RenderGui() noexcept {
 		// Resize
 		ImGui::SetNextWindowPos({ 0, 0 });
 		ImGui::SetNextWindowSize({ WIDTH, HEIGHT });
+
+		// Visible Toggle
+		if (GetAsyncKeyState(VK_RCONTROL)) {
+			if (IsShowing) {
+				ShowWindow(Window, SW_HIDE);
+			}
+			else {
+				ShowWindow(Window, SW_SHOW);
+			}
+			IsShowing = !IsShowing;
+		}
 
 		//------------------//
 		// --Start Render-- //

@@ -9,8 +9,9 @@ namespace Gui {
 	constexpr int WIDTH = 500;
 	constexpr int HEIGHT = 528;
 
-	// Is running
+	// Is running and Is showing
 	inline bool IsRunning = true;
+	inline bool IsShowing = true;
 
 	// Win Api
 	inline HWND Window = nullptr;
