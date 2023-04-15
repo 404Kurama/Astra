@@ -45,6 +45,9 @@
     <ClCompile Include="Src\Spectrum.h">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Modules\MovementModules.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
@@ -81,6 +84,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Memory.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Modules\MovementModules.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

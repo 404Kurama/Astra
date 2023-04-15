@@ -1,5 +1,6 @@
 #include "Gui.h"
 #include "Spectrum.h"
+#include "Globals.h"
 
 #include <Windows.h>
 #include <imgui/imgui.h>
@@ -134,8 +135,15 @@ void Gui::RenderGui() noexcept {
 		//------------------//
 		// --Start Render-- //
 		ImGui::Begin("Astra", &IsRunning, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove);
-		ImGui::End();
+		ImGui::BeginTabBar("Tabs");
 
+		if (ImGui::BeginTabItem("Movement")) {
+			ImGui::Checkbox("Bhop", &Globals::BHOPEnabled);
+			ImGui::EndTabItem();
+		}
+
+		ImGui::EndTabBar();
+		ImGui::End();
 		// --End Render-- //
 		//----------------//
 

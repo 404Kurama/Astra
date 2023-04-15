@@ -150,6 +150,7 @@
     <ClCompile Include="Dependencies\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Src\Gui.cpp" />
     <ClCompile Include="Src\Main.cpp" />
+    <ClCompile Include="Src\Modules\MovementModules.cpp" />
     <ClCompile Include="Src\Spectrum.h" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +168,7 @@
     <ClInclude Include="Src\Globals.h" />
     <ClInclude Include="Src\Gui.h" />
     <ClInclude Include="Src\Memory.hpp" />
+    <ClInclude Include="Src\Modules\MovementModules.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
