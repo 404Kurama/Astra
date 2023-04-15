@@ -1,7 +1,10 @@
 #include "Gui.h"
 #include "Memory.hpp"
 
+#include "Modules/MovementModules.h"
+
 #include <iostream>
+#include <thread>
 
 int main() {
 	std::cout << "[X] -->> Welcome to Astra <<-- [X]" << std::endl;
@@ -56,6 +59,9 @@ int main() {
 	std::cout << "\nFound game process starting astra in 3s" << std::endl;
 	Sleep(3000UL);
 	ShowWindow(GetConsoleWindow(), SW_HIDE);
+
+	// Modules
+	std::thread(MovementModules::StartMovementModules).detach();
 
 	// Render Gui
 	Gui::RenderGui();
