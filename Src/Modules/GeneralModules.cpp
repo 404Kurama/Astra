@@ -1,4 +1,4 @@
-#include "MovementModules.h"
+#include "GeneralModules.h"
 #include "../Memory.hpp"
 #include "../Gui.h"
 #include "../Offsets.hpp"
@@ -6,7 +6,7 @@
 #include <iostream>
 #include <thread>
 
-void MovementModules::StartMovementModules() noexcept {
+void GeneralModules::StartGeneralModules() noexcept {
 	while (Gui::IsRunning) {
 		LocalPlayer = Memory::Read<uintptr_t>(Globals::ClientAddress + Offsets::signatures::dwLocalPlayer);
 
@@ -23,7 +23,7 @@ void MovementModules::StartMovementModules() noexcept {
 	}
 }
 
-void MovementModules::StartBhopModule() noexcept {
+void GeneralModules::StartBhopModule() noexcept {
 	if (LocalPlayerHealth < 0 || LocalPlayerLifestate != 0) return;
 
 	if (GetAsyncKeyState(VK_SPACE)) {

@@ -137,7 +137,7 @@ void Gui::RenderGui() noexcept {
 		ImGui::Begin("Astra", &IsRunning, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove);
 		ImGui::BeginTabBar("Tabs");
 
-		if (ImGui::BeginTabItem("Movement")) {
+		if (ImGui::BeginTabItem("General")) {
 			ImGui::Checkbox("Bhop", &Globals::BHOPEnabled);
 			ImGui::EndTabItem();
 		}

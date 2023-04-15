@@ -1,7 +1,7 @@
 #include "Gui.h"
 #include "Memory.hpp"
 
-#include "Modules/MovementModules.h"
+#include "Modules/GeneralModules.h"
 
 #include <iostream>
 #include <thread>
@@ -61,7 +61,7 @@ int main() {
 	ShowWindow(GetConsoleWindow(), SW_HIDE);
 
 	// Modules
-	std::thread(MovementModules::StartMovementModules).detach();
+	std::thread(GeneralModules::StartGeneralModules).detach();
 
 	// Render Gui
 	Gui::RenderGui();

@@ -45,7 +45,7 @@
     <ClCompile Include="Src\Spectrum.h">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Modules\MovementModules.cpp">
+    <ClCompile Include="Src\Modules\GeneralModules.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,7 +86,7 @@
     <ClInclude Include="Src\Memory.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Modules\MovementModules.h">
+    <ClInclude Include="Src\Modules\GeneralModules.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Offsets.hpp">
