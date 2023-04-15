@@ -109,6 +109,20 @@ void Gui::RenderGui() noexcept {
 	Colors[ImGuiCol_NavWindowingDimBg] = ImVec4(0.80f, 0.80f, 0.80f, 0.20f);
 	Colors[ImGuiCol_ModalWindowDimBg] = ImVec4(0.20f, 0.20f, 0.20f, 0.35f);
 
+	// Options
+	const char* AimbotBindOptions[] = {
+		"Right Mouse Button",
+		"Left Mouse Button",
+		"Mouse 4",
+		"Mouse 5"
+	};
+
+	const char* AimbotTargetOptions[] = {
+		"Head",
+		"Body",
+		"Random"
+	};
+
 	// Main Loop
 	while (IsRunning) {
 		MSG Message;
@@ -149,6 +163,20 @@ void Gui::RenderGui() noexcept {
 
 		if (ImGui::BeginTabItem("General")) {
 			ImGui::Checkbox("Bhop", &Globals::BHOPEnabled);
+			ImGui::EndTabItem();
+		}
+
+		if (ImGui::BeginTabItem("Combat")) {
+			ImGui::Text("-->> Aimbot <<--");
+			ImGui::Checkbox("Aimbot", &Globals::AimbotEnabled);
+			ImGui::Checkbox("Fov Circle", &Globals::AimbotFovCircle);
+
+			ImGui::Combo("Target", &Globals::AimbotTarget, AimbotTargetOptions, IM_ARRAYSIZE(AimbotTargetOptions));
+			ImGui::Combo("Bind", &Globals::AimbotKey, AimbotBindOptions, IM_ARRAYSIZE(AimbotBindOptions));
+
+			ImGui::SliderFloat("Smoothness", &Globals::AimbotSmoothness, 1, 3);
+			ImGui::SliderFloat("Fov Size", &Globals::AimbotFovSize, 1, 5);
+
 			ImGui::EndTabItem();
 		}
 

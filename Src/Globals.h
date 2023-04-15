@@ -9,4 +9,11 @@ namespace Globals {
 
 	// Modules
 	inline bool BHOPEnabled = false;
+
+	inline bool AimbotEnabled = false;
+	inline bool AimbotFovCircle = false;
+	inline int AimbotTarget = 2;
+	inline int AimbotKey = 2;
+	inline float AimbotSmoothness = 3.f;
+	inline float AimbotFovSize = 3.f;
 }
