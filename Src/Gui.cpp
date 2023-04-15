@@ -72,7 +72,7 @@ void Gui::RenderGui() noexcept {
 
 		//------------------//
 		// --Start Render-- //
-		ImGui::Begin("Astra", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove);
+		ImGui::Begin("Astra", &IsRunning, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove);
 		ImGui::End();
 
 		// --End Render-- //
