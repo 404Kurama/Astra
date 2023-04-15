@@ -24,5 +24,14 @@ void MovementModules::StartMovementModules() noexcept {
 }
 
 void MovementModules::StartBhopModule() noexcept {
-	std::cout << LocalPlayerHealth << "\n";
+	if (LocalPlayerHealth < 0 || LocalPlayerLifestate != 0) return;
+
+	if (GetAsyncKeyState(VK_SPACE)) {
+		if (LocalPlayerFlags & (1 << 0)) { // On Ground
+			Memory::Write(Globals::ClientAddress + Offsets::signatures::dwForceJump, 6);
+		}
+		else {
+			Memory::Write(Globals::ClientAddress + Offsets::signatures::dwForceJump, 4);
+		}
+	}
 }
