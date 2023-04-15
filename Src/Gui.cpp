@@ -43,9 +43,11 @@ void Gui::RenderGui() noexcept {
 	IMGUI_CHECKVERSION();
 
 	ImGui::CreateContext();
-	ImGuiIO& io = ::ImGui::GetIO();
 
-	ImGui::StyleColorsDark();
+	ImGuiIO& io = ::ImGui::GetIO();
+	ImFont* Font = io.Fonts->AddFontFromMemoryCompressedTTF(Spectrum::SourceSansProRegular_compressed_data, Spectrum::SourceSansProRegular_compressed_size, 16);
+
+	io.FontDefault = Font;
 
 	ImGui_ImplWin32_Init(Window);
 	ImGui_ImplDX9_Init(Device);
