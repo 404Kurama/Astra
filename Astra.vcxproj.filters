@@ -42,6 +42,9 @@
     <ClCompile Include="Src\Gui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Spectrum.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Gui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\404Kurama\Downloads\imgui_spectrum.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

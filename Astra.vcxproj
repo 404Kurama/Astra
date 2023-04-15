@@ -150,11 +150,13 @@
     <ClCompile Include="Dependencies\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Src\Gui.cpp" />
     <ClCompile Include="Src\Main.cpp" />
+    <ClCompile Include="Src\Spectrum.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="C:\Users\404Kurama\Downloads\imgui_spectrum.h" />
     <ClInclude Include="Dependencies\imgui\imconfig.h" />
     <ClInclude Include="Dependencies\imgui\imgui.h" />
     <ClInclude Include="Dependencies\imgui\imgui_impl_dx9.h" />
