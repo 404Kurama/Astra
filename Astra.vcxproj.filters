@@ -77,7 +77,10 @@
     <ClInclude Include="Src\Gui.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\404Kurama\Downloads\imgui_spectrum.h">
+    <ClInclude Include="Src\Globals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Memory.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

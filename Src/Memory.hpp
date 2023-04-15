@@ -10,7 +10,7 @@ namespace Memory {
 
 		if (Snapshot) {
 			PROCESSENTRY32W Process;
-			Process.dwSize = sizeof(PROCESSENTRY32);
+			Process.dwSize = sizeof(PROCESSENTRY32W);
 
 			while (Process32NextW(Snapshot, &Process)) {
 				if (_wcsicmp(Process.szExeFile, ProcessName) == 0) {
