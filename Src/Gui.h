@@ -3,8 +3,7 @@
 
 namespace Gui {
 	// Window Position
-	constexpr int XPOS = 0;
-	constexpr int YPOS = 0;
+	inline POINTS Position = {};
 
 	// Window Size
 	constexpr int WIDTH = 500;

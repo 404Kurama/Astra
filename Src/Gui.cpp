@@ -20,8 +20,8 @@ void Gui::RenderGui() noexcept {
 		WindowClass.lpszClassName,
 		WindowClass.lpszClassName,
 		WS_POPUP,
-		XPOS,
-		YPOS,
+		0,
+		0,
 		WIDTH,
 		HEIGHT,
 		NULL,
@@ -178,6 +178,25 @@ LRESULT WINAPI WndProc(HWND window, UINT message, WPARAM wideParameter, LPARAM l
 		case WM_DESTROY:
 			PostQuitMessage(0);
 			exit(0);
+			return 0;
+
+		case WM_LBUTTONDOWN:
+			Gui::Position = MAKEPOINTS(longParameter);
+			return 0;
+
+		case WM_MOUSEMOVE:
+			if (wideParameter) {
+				POINTS Points = MAKEPOINTS(longParameter);
+				RECT Rect = ::RECT{};
+
+				GetWindowRect(Gui::Window, &Rect);
+
+				Rect.left += Points.x - Gui::Position.x;
+				Rect.top += Points.y - Gui::Position.y;
+
+				if (Gui::Position.x >= 0 && Gui::Position.x <= Gui::WIDTH && Gui::Position.y >= 0 && Gui::Position.y <= 19)
+					SetWindowPos(Gui::Window, HWND_TOPMOST, Rect.left, Rect.top, 0, 0, SWP_SHOWWINDOW | SWP_NOSIZE | SWP_NOZORDER);
+			}
 			return 0;
 	}
 
