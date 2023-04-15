@@ -169,6 +169,7 @@
     <ClInclude Include="Src\Gui.h" />
     <ClInclude Include="Src\Memory.hpp" />
     <ClInclude Include="Src\Modules\MovementModules.h" />
+    <ClInclude Include="Src\Offsets.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

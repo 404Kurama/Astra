@@ -49,12 +49,12 @@ namespace Memory {
 	template <typename T>
 	inline T Read(const DWORD Address) noexcept {
 		T Value = {};
-		ReadProcessMemory(Globals::ClientAddress, reinterpret_cast<LPCVOID>(Address), &Value, sizeof(T), nullptr);
+		ReadProcessMemory(Globals::ProcessHandle, reinterpret_cast<LPCVOID>(Address), &Value, sizeof(T), nullptr);
 		return Value;
 	}
 
 	template <typename T>
 	inline void Write(const DWORD Address, const T& Value) noexcept {
-		WriteProcessMemory(Globals::ClientAddress, reinterpret_cast<LPVOID>(Address), &Value, sizeof(T), nullptr);
+		WriteProcessMemory(Globals::ProcessHandle, reinterpret_cast<LPVOID>(Address), &Value, sizeof(T), nullptr);
 	}
 }

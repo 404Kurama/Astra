@@ -89,5 +89,8 @@
     <ClInclude Include="Src\Modules\MovementModules.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Offsets.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
