@@ -7,11 +7,14 @@
 #include <iostream>
 #include <thread>
 
+int AimbotTarget = 0;
 constexpr Vector3 CalculateAngle(const Vector3& localPosition, const Vector3& enemyPosition, const Vector3& viewAngles) noexcept {
 	return ((enemyPosition - localPosition).ToAngle() - viewAngles);
 }
 
 void CombatModules::StartCombatModules() noexcept {
+	std::thread(StartSecondLoop).detach();
+
 	while (Gui::IsRunning) {
 		LocalPlayer = Memory::Read<uintptr_t>(Globals::ClientAddress + Offsets::signatures::dwLocalPlayer);
 
@@ -25,6 +28,21 @@ void CombatModules::StartCombatModules() noexcept {
 		}
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(1));
+	}
+}
+
+void CombatModules::StartSecondLoop() noexcept {
+	while (Gui::IsRunning) {
+		int RandomNum = (rand() % 100) + 1;
+
+		if (RandomNum <= 35) {
+			AimbotTarget = 0;
+		}
+		else {
+			AimbotTarget = 1;
+		}
+
+		std::this_thread::sleep_for(std::chrono::seconds(2));
 	}
 }
 
@@ -71,16 +89,12 @@ void CombatModules::StartAimbotModule() noexcept {
 		if (EntityLifeState) continue;
 
 		if (EntitySpottedByMask & (1 << LocalPlayerId)) {
-			int AimbotPart = Globals::AimbotTarget;
+			int AimbotPart = AimbotTarget;
 
 			if (AimbotPart == 0) {
 				AimbotPart = 8;
 			}
 			else if (AimbotPart == 1) {
-				AimbotPart = 5;
-			}
-			else if (AimbotPart == 2) {
-				// Todo Random Part
 				AimbotPart = 5;
 			}
 

@@ -10,6 +10,7 @@ namespace CombatModules {
 	inline std::int32_t LocalPlayerFlags;
 
 	void StartCombatModules() noexcept;
-
+	void StartSecondLoop() noexcept;
+	
 	void StartAimbotModule() noexcept;
 }
