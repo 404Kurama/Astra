@@ -33,6 +33,8 @@ void CombatModules::StartCombatModules() noexcept {
 
 void CombatModules::StartSecondLoop() noexcept {
 	while (Gui::IsRunning) {
+		AimbotTarget = Globals::AimbotTarget;
+
 		if (Globals::AimbotTarget == 2) {
 			int RandomNum = (rand() % 100) + 1;
 
