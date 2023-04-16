@@ -33,16 +33,18 @@ void CombatModules::StartCombatModules() noexcept {
 
 void CombatModules::StartSecondLoop() noexcept {
 	while (Gui::IsRunning) {
-		int RandomNum = (rand() % 100) + 1;
+		if (Globals::AimbotTarget == 2) {
+			int RandomNum = (rand() % 100) + 1;
 
-		if (RandomNum <= 35) {
-			AimbotTarget = 0;
-		}
-		else {
-			AimbotTarget = 1;
-		}
+			if (RandomNum <= 35) {
+				AimbotTarget = 0;
+			}
+			else {
+				AimbotTarget = 1;
+			}
 
-		std::this_thread::sleep_for(std::chrono::seconds((rand() % 3) + 1));
+			std::this_thread::sleep_for(std::chrono::seconds((rand() % 3) + 1));
+		}
 	}
 }
 
