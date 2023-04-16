@@ -2,6 +2,7 @@
 #include "Memory.hpp"
 
 #include "Modules/GeneralModules.h"
+#include "Modules/CombatModules.h"
 
 #include <iostream>
 #include <thread>
@@ -62,6 +63,7 @@ int main() {
 
 	// Modules
 	std::thread(GeneralModules::StartGeneralModules).detach();
+	std::thread(CombatModules::StartCombatModules).detach();
 
 	// Render Gui
 	Gui::RenderGui();
