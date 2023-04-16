@@ -51,6 +51,12 @@
     <ClCompile Include="Src\Modules\CombatModules.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Render.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Dependencies\DirectOverlay\DirectOverlay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
@@ -101,5 +107,14 @@
     <ClInclude Include="Src\Modules\CombatModules.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Render.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\DirectOverlay\DirectOverlay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Dependencies\DirectOverlay\D2DOverlay.lib" />
   </ItemGroup>
 </Project>

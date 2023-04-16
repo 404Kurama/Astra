@@ -1,5 +1,6 @@
 #pragma once
 
 namespace Render {
-	void Init();
+	void DrawLoop(int width, int height);
+	void Setup();
 }

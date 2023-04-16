@@ -1,5 +1,6 @@
 #include "Gui.h"
 #include "Memory.hpp"
+#include "Render.h"
 
 #include "Modules/GeneralModules.h"
 #include "Modules/CombatModules.h"
@@ -65,7 +66,8 @@ int main() {
 	std::thread(GeneralModules::StartGeneralModules).detach();
 	std::thread(CombatModules::StartCombatModules).detach();
 
-	// Render Gui
+	// Render
+	Render::Setup();
 	Gui::RenderGui();
 
 	return 0;
