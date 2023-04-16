@@ -42,7 +42,7 @@ void CombatModules::StartSecondLoop() noexcept {
 			AimbotTarget = 1;
 		}
 
-		std::this_thread::sleep_for(std::chrono::seconds(2));
+		std::this_thread::sleep_for(std::chrono::seconds((rand() % 3) + 1));
 	}
 }
 
