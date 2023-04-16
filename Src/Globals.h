@@ -14,6 +14,6 @@ namespace Globals {
 	inline bool AimbotFovCircle = false;
 	inline int AimbotTarget = 2;
 	inline int AimbotKey = 2;
-	inline float AimbotSmoothness = 3.f;
-	inline float AimbotFovSize = 3.f;
+	inline float AimbotSmoothness = 5.f;
+	inline float AimbotFovSize = 8.f;
 }
