@@ -174,8 +174,8 @@ void Gui::RenderGui() noexcept {
 			ImGui::Combo("Target", &Globals::AimbotTarget, AimbotTargetOptions, IM_ARRAYSIZE(AimbotTargetOptions));
 			ImGui::Combo("Bind", &Globals::AimbotKey, AimbotBindOptions, IM_ARRAYSIZE(AimbotBindOptions));
 
-			ImGui::SliderFloat("Smoothness", &Globals::AimbotSmoothness, 1, 3);
-			ImGui::SliderFloat("Fov Size", &Globals::AimbotFovSize, 1, 5);
+			ImGui::SliderFloat("Smoothness", &Globals::AimbotSmoothness, 1, 50);
+			ImGui::SliderFloat("Fov Size", &Globals::AimbotFovSize, 1, 20);
 
 			ImGui::EndTabItem();
 		}
