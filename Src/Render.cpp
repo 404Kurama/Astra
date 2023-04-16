@@ -1,11 +1,21 @@
 #include "Render.h"
 
+#include "Globals.h"
+
 #include <DirectOverlay/DirectOverlay.h>
 #include <iostream>
 
 
 void Render::DrawLoop(int width, int height) {
-	//DrawString("Test", 26.f, 50.f, 50.f, 255.f, 255.f, 255.f, 1.0f);
+	POINT CursorPosition;
+	GetCursorPos(&CursorPosition);
+
+	if (Globals::AimbotFovCircle) {
+		float FovCircleColor[4] = { 1.f, 0.f , 0.f, 1.f };
+		
+		// I don't know how to calculate size but nvm it just work
+		DrawCircle(CursorPosition.x, CursorPosition.y, Globals::AimbotFovSize + 60, 1, FovCircleColor[0], FovCircleColor[1], FovCircleColor[2], FovCircleColor[3], false);
+	}
 }
 
 void Render::Setup() {
