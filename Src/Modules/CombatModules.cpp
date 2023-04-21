@@ -94,8 +94,6 @@ void CombatModules::StartAimbotModule() noexcept {
 		if (EntitySpottedByMask & (1 << LocalPlayerId)) {
 			uintptr_t BoneMatrix = Memory::Read<uintptr_t>(Entity + Offsets::netvars::m_dwBoneMatrix);
 
-			std::cout << AimbotPart << "\n";
-
 			if (Globals::AimbotTarget == 0) {
 				AimbotPart = 8;
 			}
@@ -125,5 +123,19 @@ void CombatModules::StartAimbotModule() noexcept {
 }
 
 void CombatModules::StartTriggerbotModule() noexcept {
+	if (LocalPlayerHealth < 0 || LocalPlayerLifestate != 0) return;
 
+	std::int32_t CrosshairId = Memory::Read<std::int32_t>(LocalPlayer + Offsets::netvars::m_iCrosshairId);
+	if (!CrosshairId || CrosshairId > 64) return;
+
+	uintptr_t Entity = Memory::Read<uintptr_t>(Globals::ClientAddress + Offsets::signatures::dwEntityList + (CrosshairId - 1) * 0x10);
+	std::int32_t EntityTeam = Memory::Read<std::int32_t>(Entity + Offsets::netvars::m_iTeamNum);
+	std::int32_t EntityLifeState = Memory::Read<std::int32_t>(Entity + Offsets::netvars::m_lifeState);
+
+	if (EntityTeam == LocalPlayerTeam) return;
+	if (EntityLifeState) return;
+
+	Memory::Write<uintptr_t>(Globals::ClientAddress + Offsets::signatures::dwForceAttack, 6);
+	std::this_thread::sleep_for(std::chrono::milliseconds(20));
+	Memory::Write<uintptr_t>(Globals::ClientAddress + Offsets::signatures::dwForceAttack, 4);
 }
