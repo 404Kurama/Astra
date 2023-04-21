@@ -13,4 +13,5 @@ namespace CombatModules {
 	void StartSecondLoop() noexcept;
 	
 	void StartAimbotModule() noexcept;
+	void StartTriggerbotModule() noexcept;
 }

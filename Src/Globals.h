@@ -9,6 +9,7 @@ namespace Globals {
 
 	// Modules
 	inline bool BHOPEnabled = false;
+	inline bool TriggerBotEnabled = false;
 
 	inline bool AimbotEnabled = false;
 	inline bool AimbotFovCircle = false;

@@ -25,6 +25,7 @@ void CombatModules::StartCombatModules() noexcept {
 			LocalPlayerFlags = Memory::Read<std::int32_t>(LocalPlayer + Offsets::netvars::m_fFlags);
 
 			if (Globals::AimbotEnabled) StartAimbotModule();
+			if (Globals::TriggerBotEnabled) StartTriggerbotModule();
 		}
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(1));
@@ -122,4 +123,8 @@ void CombatModules::StartAimbotModule() noexcept {
 
 	if (!BestAngle.IsZero())
 		Memory::Write<Vector3>(ClientState + Offsets::signatures::dwClientState_ViewAngles, ViewAngles + BestAngle / Globals::AimbotSmoothness);
+}
+
+void CombatModules::StartTriggerbotModule() noexcept {
+
 }
