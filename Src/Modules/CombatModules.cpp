@@ -7,7 +7,7 @@
 #include <iostream>
 #include <thread>
 
-int AimbotTarget = 0;
+int AimbotPart = 0;
 constexpr Vector3 CalculateAngle(const Vector3& localPosition, const Vector3& enemyPosition, const Vector3& viewAngles) noexcept {
 	return ((enemyPosition - localPosition).ToAngle() - viewAngles);
 }
@@ -34,16 +34,14 @@ void CombatModules::StartCombatModules() noexcept {
 
 void CombatModules::StartSecondLoop() noexcept {
 	while (Gui::IsRunning) {
-		AimbotTarget = Globals::AimbotTarget;
-
 		if (Globals::AimbotTarget == 2) {
 			int RandomNum = (rand() % 100) + 1;
 
 			if (RandomNum <= 35) {
-				AimbotTarget = 0;
+				AimbotPart = 8;
 			}
 			else {
-				AimbotTarget = 1;
+				AimbotPart = 5;
 			}
 
 			std::this_thread::sleep_for(std::chrono::seconds((rand() % 3) + 1));
@@ -94,16 +92,17 @@ void CombatModules::StartAimbotModule() noexcept {
 		if (EntityLifeState) continue;
 
 		if (EntitySpottedByMask & (1 << LocalPlayerId)) {
-			int AimbotPart = AimbotTarget;
+			uintptr_t BoneMatrix = Memory::Read<uintptr_t>(Entity + Offsets::netvars::m_dwBoneMatrix);
 
-			if (AimbotPart == 0) {
+			std::cout << AimbotPart << "\n";
+
+			if (Globals::AimbotTarget == 0) {
 				AimbotPart = 8;
 			}
-			else if (AimbotPart == 1) {
+
+			if (Globals::AimbotTarget == 1) {
 				AimbotPart = 5;
 			}
-
-			uintptr_t BoneMatrix = Memory::Read<uintptr_t>(Entity + Offsets::netvars::m_dwBoneMatrix);
 
 			Vector3 EntityPosition = Vector3{
 				Memory::Read<float>(BoneMatrix + 0x30 * AimbotPart + 0x0C),
