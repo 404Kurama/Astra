@@ -125,6 +125,11 @@ void Gui::RenderGui() noexcept {
 
 	// Main Loop
 	while (IsRunning) {
+		if (!FindWindowA(0, "Counter-Strike: Global Offensive - Direct3D 9")) {
+			IsRunning = FALSE;
+			exit(0);
+		}
+
 		MSG Message;
 
 		while (PeekMessage(&Message, NULL, 0U, 0U, PM_REMOVE)) {
