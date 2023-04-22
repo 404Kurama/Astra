@@ -166,7 +166,7 @@ void Gui::RenderGui() noexcept {
 		ImGui::Begin("Astra", &IsRunning, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove);
 		ImGui::BeginTabBar("Tabs");
 
-		if (ImGui::BeginTabItem("General")) {
+		if (ImGui::BeginTabItem("Home")) {
 			ImGui::Checkbox("Bhop", &Globals::BHOPEnabled);
 			ImGui::EndTabItem();
 		}
@@ -185,6 +185,22 @@ void Gui::RenderGui() noexcept {
 			ImGui::Text("-->> Others <<--");
 			ImGui::Checkbox("Triggerbot", &Globals::TriggerBotEnabled);
 			ImGui::Checkbox("No Recoil", &Globals::NorecoilEnabled);
+
+			ImGui::EndTabItem();
+		}
+
+		if (ImGui::BeginTabItem("Visual")) {
+			ImGui::Text("-->> Glow <<--");
+			ImGui::Checkbox("Glow", &Globals::GlowEnabled);
+			ImGui::Checkbox("Glow Team", &Globals::GlowTeam);
+			ImGui::ColorEdit4("Glow Team Color", Globals::GlowTeamColor);
+			ImGui::ColorEdit4("Glow Enemy Color", Globals::GlowEnemyColor);
+
+			ImGui::Text("-->> Chams <<--");
+			ImGui::Checkbox("Chams", &Globals::ChamsEnabled);
+			ImGui::Checkbox("Chams Team", &Globals::ChamsTeam);
+			ImGui::ColorEdit4("Chams Team Color", Globals::ChamsTeamColor);
+			ImGui::ColorEdit4("Chams Enemy Color", Globals::ChamsEnemyColor);
 
 			ImGui::EndTabItem();
 		}
