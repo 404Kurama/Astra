@@ -4,6 +4,7 @@
 
 #include "Modules/GeneralModules.h"
 #include "Modules/CombatModules.h"
+#include "Modules/VisualModules.h"
 
 #include <iostream>
 #include <thread>
@@ -65,6 +66,7 @@ int main() {
 	// Modules
 	std::thread(GeneralModules::StartGeneralModules).detach();
 	std::thread(CombatModules::StartCombatModules).detach();
+	std::thread(VisualModules::StartVisualModules).detach();
 
 	// Render
 	Render::Setup();
