@@ -57,6 +57,9 @@
     <ClCompile Include="Dependencies\DirectOverlay\DirectOverlay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Modules\VisualModules.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
@@ -111,6 +114,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Dependencies\DirectOverlay\DirectOverlay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Modules\VisualModules.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

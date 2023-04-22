@@ -153,6 +153,7 @@
     <ClCompile Include="Src\Main.cpp" />
     <ClCompile Include="Src\Modules\CombatModules.cpp" />
     <ClCompile Include="Src\Modules\GeneralModules.cpp" />
+    <ClCompile Include="Src\Modules\VisualModules.cpp" />
     <ClCompile Include="Src\Render.cpp" />
     <ClCompile Include="Src\Spectrum.h" />
   </ItemGroup>
@@ -174,6 +175,7 @@
     <ClInclude Include="Src\Memory.hpp" />
     <ClInclude Include="Src\Modules\CombatModules.h" />
     <ClInclude Include="Src\Modules\GeneralModules.h" />
+    <ClInclude Include="Src\Modules\VisualModules.h" />
     <ClInclude Include="Src\Offsets.hpp" />
     <ClInclude Include="Src\Render.h" />
     <ClInclude Include="Src\Vector.h" />
