@@ -14,4 +14,5 @@ namespace CombatModules {
 	
 	void StartAimbotModule() noexcept;
 	void StartTriggerbotModule() noexcept;
+	void StartNorecoilModule() noexcept;
 }

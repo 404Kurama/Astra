@@ -26,6 +26,7 @@ void CombatModules::StartCombatModules() noexcept {
 
 			if (Globals::AimbotEnabled) StartAimbotModule();
 			if (Globals::TriggerBotEnabled) StartTriggerbotModule();
+			if (Globals::NorecoilEnabled) StartNorecoilModule();
 		}
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(1));
@@ -138,4 +139,29 @@ void CombatModules::StartTriggerbotModule() noexcept {
 	Memory::Write<uintptr_t>(Globals::ClientAddress + Offsets::signatures::dwForceAttack, 6);
 	std::this_thread::sleep_for(std::chrono::milliseconds(20));
 	Memory::Write<uintptr_t>(Globals::ClientAddress + Offsets::signatures::dwForceAttack, 4);
+}
+
+Vector3 LastAimPunchAngle;
+void CombatModules::StartNorecoilModule() noexcept {
+	if (LocalPlayerHealth < 0 || LocalPlayerLifestate != 0) return;
+
+	std::int32_t ShotsFired = Memory::Read<std::int32_t>(LocalPlayer + Offsets::netvars::m_iShotsFired);
+
+	uintptr_t ClientState = Memory::Read<uintptr_t>(Globals::EngineAddress + Offsets::signatures::dwClientState);
+	Vector3 ViewAngles = Memory::Read<Vector3>(ClientState + Offsets::signatures::dwClientState_ViewAngles);
+	Vector3 AimPunch = Memory::Read<Vector3>(LocalPlayer + Offsets::netvars::m_aimPunchAngle) * 2;
+
+	if (ShotsFired > 1) {
+		Vector3 NewAngle = ViewAngles + LastAimPunchAngle - AimPunch;
+
+		if (NewAngle.x > 89) NewAngle.x = 89;
+		if (NewAngle.x < -89) NewAngle.x = -89;
+
+		while (NewAngle.y > 180) NewAngle.y -= 360;
+		while (NewAngle.y < -180) NewAngle.y += 360;
+
+		Memory::Write<Vector3>(ClientState + Offsets::signatures::dwClientState_ViewAngles, NewAngle);
+	}
+
+	LastAimPunchAngle = AimPunch;
 }

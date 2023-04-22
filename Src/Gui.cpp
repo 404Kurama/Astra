@@ -177,8 +177,9 @@ void Gui::RenderGui() noexcept {
 			ImGui::SliderFloat("Smoothness", &Globals::AimbotSmoothness, 1, 50);
 			ImGui::SliderFloat("Fov Size", &Globals::AimbotFovSize, 1, 20);
 
-			ImGui::Text("-->> Triggerbot <<--");
+			ImGui::Text("-->> Others <<--");
 			ImGui::Checkbox("Triggerbot", &Globals::TriggerBotEnabled);
+			ImGui::Checkbox("No Recoil", &Globals::NorecoilEnabled);
 
 			ImGui::EndTabItem();
 		}
