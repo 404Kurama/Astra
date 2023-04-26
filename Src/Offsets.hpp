@@ -2,10 +2,10 @@
 #include <cstdint>
 
 // https://raw.githubusercontent.com/404Kurama/Hazedumper/main/offsets/csgo.hpp
-// 2023-04-21 15:35:25.158542400 UTC
+// 2023-04-26 10:30:55.372596 UTC
 
 namespace Offsets {
-	constexpr ::std::int64_t timestamp = 1682091325;
+	constexpr ::std::int64_t timestamp = 1682505055;
 	namespace netvars {
 		constexpr ::std::ptrdiff_t cs_gamerules_data = 0x0;
 		constexpr ::std::ptrdiff_t m_ArmorValue = 0x117CC;
@@ -148,7 +148,7 @@ namespace Offsets {
 		constexpr ::std::ptrdiff_t dwZoomSensitivityRatioPtr = 0xDF4380;
 		constexpr ::std::ptrdiff_t dwbSendPackets = 0xDD2B2;
 		constexpr ::std::ptrdiff_t dwppDirect3DDevice9 = 0xA62C0;
-		constexpr ::std::ptrdiff_t find_hud_element = 0x29350090;
+		constexpr ::std::ptrdiff_t find_hud_element = 0x23EF0090;
 		constexpr ::std::ptrdiff_t force_update_spectator_glow = 0x3D96FA;
 		constexpr ::std::ptrdiff_t interface_engine_cvar = 0x3FA9C;
 		constexpr ::std::ptrdiff_t is_c4_owner = 0x3E6F10;
