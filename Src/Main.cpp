@@ -60,7 +60,7 @@ int main() {
 	std::cout << "----------------------------------------" << std::endl;
 
 	std::cout << "\nFound game process starting astra in 3s" << std::endl;
-	//Sleep(3000UL);
+	Sleep(3000UL);
 	ShowWindow(GetConsoleWindow(), SW_HIDE);
 
 	// Modules
