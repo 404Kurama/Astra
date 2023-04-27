@@ -12,4 +12,5 @@ namespace VisualModules {
 
 	void StartGlowModule() noexcept;
 	void StartChamsModule() noexcept;
+	void ResetChamsModule() noexcept;
 }

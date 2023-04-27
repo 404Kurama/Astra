@@ -199,8 +199,8 @@ void Gui::RenderGui() noexcept {
 			ImGui::Text("-->> Chams <<--");
 			ImGui::Checkbox("Chams", &Globals::ChamsEnabled);
 			ImGui::Checkbox("Chams Team", &Globals::ChamsTeam);
-			ImGui::ColorEdit4("Chams Team Color", Globals::ChamsTeamColor);
-			ImGui::ColorEdit4("Chams Enemy Color", Globals::ChamsEnemyColor);
+			ImGui::ColorEdit3("Chams Team Color", Globals::ChamsTeamColor);
+			ImGui::ColorEdit3("Chams Enemy Color", Globals::ChamsEnemyColor);
 
 			ImGui::EndTabItem();
 		}

@@ -10,6 +10,7 @@ struct Color {
 	uint8_t r{ }, g{ }, b{ };
 };
 
+float Brightness = 0.f;
 void VisualModules::StartVisualModules() noexcept {
 	while (Gui::IsRunning) {
 		LocalPlayer = Memory::Read<uintptr_t>(Globals::ClientAddress + Offsets::signatures::dwLocalPlayer);
@@ -21,10 +22,33 @@ void VisualModules::StartVisualModules() noexcept {
 			LocalPlayerFlags = Memory::Read<std::int32_t>(LocalPlayer + Offsets::netvars::m_fFlags);
 
 			if (Globals::GlowEnabled) StartGlowModule();
-			if (Globals::ChamsEnabled) StartChamsModule();
+			if (Globals::ChamsEnabled) StartChamsModule(); else ResetChamsModule();
+			
+			uintptr_t a = static_cast<uintptr_t>(Globals::EngineAddress + Offsets::signatures::model_ambient_min - 0x2C);
+			Memory::Write<int32_t>(Globals::EngineAddress + Offsets::signatures::model_ambient_min, *reinterpret_cast<uintptr_t*>(&Brightness) ^ a);
 		}
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(1));
+	}
+}
+
+void VisualModules::ResetChamsModule() noexcept {
+	// Omg reset chams module that doesn't exist in Meloternal OMGG!!!!!
+	// https://github.com/404Kurama/Meloternal/blob/main/src/Modules.cpp#L106
+
+	Brightness = 0.f;
+
+	for (int i = 1; i <= 64; i++) {
+		uintptr_t Entity = Memory::Read<uintptr_t>(Globals::ClientAddress + Offsets::signatures::dwEntityList + i * 0x10);
+
+		std::int32_t EntityTeam = Memory::Read<std::int32_t>(Entity + Offsets::netvars::m_iTeamNum);
+		std::int32_t EntityLifeState = Memory::Read<std::int32_t>(Entity + Offsets::netvars::m_lifeState);
+
+		if (EntityLifeState) continue;
+		if (EntityTeam == LocalPlayerTeam && !Globals::GlowTeam) continue;
+
+		Color color = Color{ uint8_t(255), uint8_t(255), uint8_t(255) };
+		Memory::Write<Color>(Entity + Offsets::netvars::m_clrRender, color);
 	}
 }
 
@@ -55,5 +79,26 @@ void VisualModules::StartGlowModule() noexcept {
 }
 
 void VisualModules::StartChamsModule() noexcept {
+	Brightness = 10.f;
 
+	for (int i = 1; i <= 64; i++) {
+		uintptr_t Entity = Memory::Read<uintptr_t>(Globals::ClientAddress + Offsets::signatures::dwEntityList + i * 0x10);
+
+		std::int32_t EntityTeam = Memory::Read<std::int32_t>(Entity + Offsets::netvars::m_iTeamNum);
+		std::int32_t EntityLifeState = Memory::Read<std::int32_t>(Entity + Offsets::netvars::m_lifeState);
+
+		if (EntityLifeState) continue;
+		if (EntityTeam == LocalPlayerTeam && !Globals::GlowTeam) continue;
+
+		float* ChamsColor = (EntityTeam == LocalPlayerTeam) ? Globals::ChamsTeamColor : Globals::ChamsEnemyColor;
+		int r, g, b;
+
+		r = int(ChamsColor[0] * 255.0f + 0.5f);
+		g = int(ChamsColor[1] * 255.0f + 0.5f);
+		b = int(ChamsColor[2] * 255.0f + 0.5f);
+
+		Color color = Color{ uint8_t(r), uint8_t(g), uint8_t(b) };
+
+		Memory::Write<Color>(Entity + Offsets::netvars::m_clrRender, color);
+	}
 }
