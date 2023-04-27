@@ -190,6 +190,13 @@ void Gui::RenderGui() noexcept {
 		}
 
 		if (ImGui::BeginTabItem("Visual")) {
+			ImGui::Text("-->> ESP <<--");
+			ImGui::Checkbox("ESP", &Globals::ESPEnabled);
+			ImGui::Checkbox("ESP Team", &Globals::ESPTeam);
+			ImGui::Checkbox("Show Health", &Globals::ESPShowHealth);
+			ImGui::ColorEdit3("ESP Team Color", Globals::ESPTeamColor);
+			ImGui::ColorEdit3("ESP Enemy Color", Globals::ESPEnemyColor);
+
 			ImGui::Text("-->> Glow <<--");
 			ImGui::Checkbox("Glow", &Globals::GlowEnabled);
 			ImGui::Checkbox("Glow Team", &Globals::GlowTeam);
