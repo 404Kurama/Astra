@@ -1,5 +1,6 @@
 #pragma once
 #include <Windows.h>
+#include <iostream>
 
 namespace Globals {
 	// Address
@@ -34,4 +35,8 @@ namespace Globals {
 	inline bool ChamsTeam = true;
 	inline float ChamsTeamColor[] = { 0.f, 1.f, 0.f };
 	inline float ChamsEnemyColor[] = { 1.f, 0.f, 0.f };
+
+	inline bool AutoLoadConfig = true;
+	inline bool AutoSaveConfig = false;
+	inline std::string AutoLoadConfigFileName = "default.json";
 }

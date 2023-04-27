@@ -119,6 +119,9 @@
     <ClInclude Include="Src\Modules\VisualModules.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Dependencies\json\json.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="Dependencies\DirectOverlay\D2DOverlay.lib" />
